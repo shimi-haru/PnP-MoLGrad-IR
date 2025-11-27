@@ -38,20 +38,22 @@ The proposed denoiser:
 - enforces **non-negativity** of weights
 - satisfies **monotonicity** and **Lipschitz continuity**
 - yields a **MoL-Grad denoiser**:
-  `$$
+
+  `[
   D(x) = \nabla \psi(x)
+  \]
 
-  $$
-  `
+  for a smooth convex potential `\[ ψ \]`
 
-  for a smooth convex potential `$$ ψ
-  $$`
-  $$
+  ```
+
+  ```
 
 - induces an _implicit weakly convex regularizer_
-  `$$
-\varphi = \psi^\* - \frac{1}{2}\|x\|^2
-$$`
+  ````[
+  \varphi = \psi^\* - \frac{1}{2}\|x\|^2
+  \]```
+  ````
 - **guarantees convergence** of PnP proximal splitting without restricting
   Lipschitz < 1 (unlike classical nonexpansive PnP)
 
