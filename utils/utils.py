@@ -2,22 +2,30 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import torch
+import urllib.request
 
 from model.get_denoiser import get_denoiser
+
+
+def load_pth_from_github(url, save_path, map_location="cpu"):
+    if not os.path.exists(save_path):
+        print(f"Downloading: {url}")
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        urllib.request.urlretrieve(url, save_path)
+
+    print(f"Loading model from {save_path}")
+    return torch.load(save_path, map_location=map_location)
 
 
 def install_denoiser(net_name, gray, device):
 
     denoiser = get_denoiser(net_name, image_channels=1 if gray else 3)
 
-    file_path = "../audio/para_data/train_denoiser5/mol_grad_unet7/mol_grad_unet7_noise=0.15_notie.pth"
-    if os.path.exists(file_path):
-        state = torch.load(file_path, map_location=device)
-        denoiser.load_state_dict(state)
+    url = "https://github.com/shimi-haru/PnP-MoLGrad-IR/releases/download/v1.0.0/MoL_Grad_noise015.pth"
+    save_path = "./param/MoL_Grad_noise015.pth"
 
-    else:
-        print(f"No checkpoint found at {file_path}")
-        print(file_path)
+    state = load_pth_from_github(url, save_path, map_location=device)
+    denoiser.load_state_dict(state)
     denoiser = denoiser.to(device)
 
     return denoiser
