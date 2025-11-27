@@ -43,7 +43,7 @@ The proposed denoiser:
   D(x) = \nabla \psi(x)
   \]
 
-  for a smooth convex potential `\[ ψ \]`
+  for a smooth convex potential `\[ $$ ψ $$ \]`
 
   ```
 
