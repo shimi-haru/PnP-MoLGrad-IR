@@ -29,23 +29,9 @@ to the minimizer of a cost function involving an implicit weakly convex regulari
 
 ---
 
-## 📚 Paper Summary
+## 📚 Abstract
 
-The proposed denoiser:
-
-- is a **multi-layer autoencoder-type NN** with weight tying
-  (encoder weights = decoder weightsᵀ)
-- enforces **non-negativity** of weights
-- satisfies **monotonicity** and **Lipschitz continuity**
-- yields a **MoL-Grad denoiser**:
-  <img src="https://render.githubusercontent.com/render/math?math=D%28x%29%3D%5Cnabla%5Cpsi%28x%29">
-  for a smooth convex potential ψ
-- induces an _implicit weakly convex regularizer_
-  <img src="https://render.githubusercontent.com/render/math?math=%5Cvarphi%28x%29%3D%5Cpsi%5E%2A%28x%29-%5Cfrac12%5C%7Cx%5C%7C%5E2">
-- **guarantees convergence** of PnP proximal splitting without restricting
-  Lipschitz < 1 (unlike classical nonexpansive PnP)
-
-Deblurring is solved by the primal–dual algorithm described in **Algorithm 1** of the paper.
+We propose a novel multi-layer neural network architecture that gives a promising neural network empowered optimization approach to the image restoration problem. The proposed architecture is motivated by the recent study of monotone Lipschitz-gradient (MoL-Grad) denoiser (Yukawa and Yamada, 2025) which establishes an `explainable'' plug-and-play (PnP) framework in the sense of disclosing the objective minimized. The architecture is derived from the gradient of a superposition of functions associated with each layer, having the weights in the encoder and decoder tied with each other. Convexity of the potential, and thus monotonicity of its gradient (denoiser), is ensured by restricting ourselves to nonnegative weights. Unlike the previous PnP approaches with theoretical guarantees, the denoiser is free from constraints on the Lipschitz constant of the denoiser. Our PnP algorithm employing the weight-tying nonnegative neural network converges to a minimizer of the objective involving an `implicit'' weakly convex regularizer induced by the denoiser. The convergence analysis relies on an efficient technique to preserve the overall convexity even in the ill-conditioned case where the loss function is not strongly convex. The simulation study shows the advantages of the Lipschitz-constraint-free nature of the proposed denoiser in training time as well as deblurring performance.
 
 ---
 
