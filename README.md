@@ -29,9 +29,33 @@ to the minimizer of a cost function involving an implicit weakly convex regulari
 
 ---
 
-## 📚 Abstract
+## 📚 Paper Summary
 
-We propose a novel multi-layer neural network architecture that gives a promising neural network empowered optimization approach to the image restoration problem. The proposed architecture is motivated by the recent study of monotone Lipschitz-gradient (MoL-Grad) denoiser (Yukawa and Yamada, 2025) which establishes an `explainable'' plug-and-play (PnP) framework in the sense of disclosing the objective minimized. The architecture is derived from the gradient of a superposition of functions associated with each layer, having the weights in the encoder and decoder tied with each other. Convexity of the potential, and thus monotonicity of its gradient (denoiser), is ensured by restricting ourselves to nonnegative weights. Unlike the previous PnP approaches with theoretical guarantees, the denoiser is free from constraints on the Lipschitz constant of the denoiser. Our PnP algorithm employing the weight-tying nonnegative neural network converges to a minimizer of the objective involving an `implicit'' weakly convex regularizer induced by the denoiser. The convergence analysis relies on an efficient technique to preserve the overall convexity even in the ill-conditioned case where the loss function is not strongly convex. The simulation study shows the advantages of the Lipschitz-constraint-free nature of the proposed denoiser in training time as well as deblurring performance.
+The proposed denoiser:
+
+- is a **multi-layer autoencoder-type NN** with weight tying
+  (encoder weights = decoder weightsᵀ)
+- enforces **non-negativity** of weights
+- satisfies **monotonicity** and **Lipschitz continuity**
+- yields a **MoL-Grad denoiser**:
+  `$$
+  D(x) = \nabla \psi(x)
+
+  $$
+  `
+
+  for a smooth convex potential `$$ ψ
+  $$`
+  $$
+
+- induces an _implicit weakly convex regularizer_
+  `$$
+\varphi = \psi^\* - \frac{1}{2}\|x\|^2
+$$`
+- **guarantees convergence** of PnP proximal splitting without restricting
+  Lipschitz < 1 (unlike classical nonexpansive PnP)
+
+Deblurring is solved by the primal–dual algorithm described in **Algorithm 1** of the paper.
 
 ---
 
