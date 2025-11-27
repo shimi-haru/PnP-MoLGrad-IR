@@ -80,7 +80,7 @@ def main_deblur():
         if (not single_mode) or (single_mode and i == image_num):
             blur_image, true_image = batch["noise"], batch["true"]
             if blur_image.numel() == 0 or true_image.numel() == 0:
-                print("skip")
+                pass
             else:
                 blur_image = blur_image.to(
                     device=device, dtype=torch.float32)

@@ -2,12 +2,6 @@ import os
 import torch.nn as nn
 import numpy as np
 
-from model.get_denoiser import get_denoiser
-
-from model.net_module_part import H_layer
-from model.net_module_part import Ht_layer
-from model.net_module_part import prox_fid
-from model.net_module_part import grad_fid
 from model.net_module_part import grad_fid_and_norm
 
 
@@ -37,7 +31,7 @@ class net_module(nn.Module):
         self.grad.get_rho_th(1)
 
         # Load mu dictionary for parameter settings
-        mu_dict_path = "mu_dict_MoLGrad.npy"
+        mu_dict_path = "model/param/mu_dict_MoLGrad.npy"
         if not os.path.exists(mu_dict_path):
             print(
                 f"Warning: '{mu_dict_path}' not found. Cannot load mu parameters.")
