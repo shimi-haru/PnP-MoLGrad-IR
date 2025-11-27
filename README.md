@@ -4,6 +4,7 @@ This repository provides the official PyTorch implementation for the paper:
 
 **"Plugging Weight-tying Nonnegative Neural Network into Proximal Splitting Method:
 Architecture for Guaranteeing Convergence to Optimal Point"**
+
 Haruya Shimizu, Masahiro Yukawa
 (arXiv: https://arxiv.org/abs/2510.21421)
 
@@ -37,22 +38,16 @@ The proposed denoiser:
 - enforces **non-negativity** of weights
 - satisfies **monotonicity** and **Lipschitz continuity**
 - yields a **MoL-Grad denoiser**:
-  $$
-  D(x) = \nabla \psi(x)
-  $$
+  <img src="https://render.githubusercontent.com/render/math?math=D%28x%29%3D%5Cnabla%5Cpsi%28x%29">
   for a smooth convex potential ψ
 - induces an _implicit weakly convex regularizer_
-  $$
-  \varphi = \psi^\* - \frac{1}{2}\|x\|^2
-  $$
+  <img src="https://render.githubusercontent.com/render/math?math=%5Cvarphi%28x%29%3D%5Cpsi%5E%2A%28x%29-%5Cfrac12%5C%7Cx%5C%7C%5E2">
 - **guarantees convergence** of PnP proximal splitting without restricting
   Lipschitz < 1 (unlike classical nonexpansive PnP)
 
 Deblurring is solved by the primal–dual algorithm described in **Algorithm 1** of the paper.
 
 ---
-
-## 📦 Requirements
 
 ## Citation
 
