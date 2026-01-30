@@ -38,7 +38,7 @@ We propose a novel multi-layer neural network architecture that gives a promisin
 ## Citation
 
 ```bibtex
-@article{shimizu2025molgrad,
+@article{shimizu2025WNNN,
   title={Plugging Weight-tying Nonnegative Neural Network into Proximal Splitting Method: Architecture for Guaranteeing Convergence to Optimal Point},
   author={Shimizu, Haruya and Yukawa, Masahiro},
   journal={arXiv preprint arXiv:2510.21421},
